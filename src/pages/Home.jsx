@@ -3,6 +3,7 @@ import { Categories } from '../components/Categories'
 import { Sort } from '../components/Sort'
 import { Skeleton } from '../components/PizzaBlock/Skeleton'
 import { PizzaBlock } from '../components/PizzaBlock/PizzaBlock'
+import { Pagination } from '../components/Pagination/Pagination'
 
 export function Home(props) {
 	const { searchValue } = props
@@ -14,6 +15,7 @@ export function Home(props) {
 		name: 'популярности ▼',
 		sortProperty: 'rating'
 	})
+	const [currentPage, setCurrentPage] = useState(1)
 
 	// [] - первый рендер
 	useEffect(() => {
@@ -25,7 +27,7 @@ export function Home(props) {
 		const search = searchValue ? `&search=${searchValue}` : ''
 
 		fetch(
-			`https://64bbb2af7b33a35a44469688.mockapi.io/items?${category}&sortBy=${sortBy}&order=${order}${search}`
+			`https://64bbb2af7b33a35a44469688.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`
 		)
 			.then(res => res.json())
 			.then(json => {
@@ -33,7 +35,7 @@ export function Home(props) {
 				setIsLoading(false)
 			})
 		window.scrollTo(0, 0)
-	}, [categoryId, sortType, searchValue])
+	}, [categoryId, sortType, searchValue, currentPage])
 
 	const pizzas = items.map(pizza => <PizzaBlock key={pizza.id} {...pizza} />)
 	/* фильтр если статичный список
@@ -59,6 +61,7 @@ export function Home(props) {
 				</div>
 				<h2 className='content__title'>Все пиццы</h2>
 				<div className='content__items'>{isLoading ? skeletons : pizzas}</div>
+				<Pagination onChangePage={number => setCurrentPage(number)} />
 			</div>
 		</>
 	)
