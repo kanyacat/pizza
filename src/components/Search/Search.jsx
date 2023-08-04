@@ -1,10 +1,11 @@
 import styles from './Search.module.scss'
-import { useCallback, useContext, useRef, useState } from 'react'
-import { SearchContext } from '../../App'
+import { useCallback, useRef, useState } from 'react'
 import debounce from 'lodash.debounce'
+import { useDispatch } from 'react-redux'
+import { setSearchValue } from '../../redux/slices/filterSlice'
 
 export function Search() {
-	const { setSearchValue } = useContext(SearchContext)
+	const dispatch = useDispatch()
 	const [inputValue, setInputValue] = useState('')
 
 	const inputRef = useRef()
@@ -13,14 +14,14 @@ export function Search() {
 	const updateSearchValue = useCallback(
 		debounce(value => {
 			console.log(value)
-			setSearchValue(value)
+			dispatch(setSearchValue(value))
 		}, 250),
 		[]
 	)
 
 	const onClickClear = () => {
 		setInputValue('')
-		setSearchValue('')
+		dispatch(setSearchValue(''))
 		inputRef.current.focus()
 	}
 
