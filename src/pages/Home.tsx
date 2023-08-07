@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Categories } from '../components/Categories'
 import { Sort, sortList } from '../components/Sort'
 import { Skeleton } from '../components/PizzaBlock/Skeleton'
@@ -15,7 +15,7 @@ import qs from 'qs'
 import { useNavigate } from 'react-router-dom'
 import { fetchPizzas, pizzasSelector } from '../redux/slices/pizzasSlice'
 
-export function Home() {
+export const Home: React.FC = () => {
 	const navigate = useNavigate()
 
 	const { categoryId, sort, currentPage, searchValue } =
@@ -33,6 +33,7 @@ export function Home() {
 		const search = searchValue ? `&search=${searchValue}` : ''
 
 		dispatch(
+			//@ts-ignore
 			fetchPizzas({
 				sortBy,
 				category,
@@ -43,12 +44,12 @@ export function Home() {
 		)
 	}
 
-	const onChangeCategory = id => {
+	const onChangeCategory = (id: number) => {
 		dispatch(setCategoryId(id))
 	}
 
-	const onChangePage = number => {
-		dispatch(setCurrentPage(number))
+	const onChangePage = (page: number) => {
+		dispatch(setCurrentPage(page))
 	}
 
 	//если был первый рендер и изменились параметры
@@ -92,7 +93,9 @@ export function Home() {
 		isSearch.current = false
 	}, [categoryId, sort.sortProperty, searchValue, currentPage])
 
-	const pizzas = items.map(pizza => <PizzaBlock key={pizza.id} {...pizza} />)
+	const pizzas = items.map((pizza: any) => (
+		<PizzaBlock key={pizza.id} {...pizza} />
+	))
 	const skeletons = [...new Array(6)].map((_, index) => (
 		<Skeleton key={index} />
 	))
@@ -103,7 +106,7 @@ export function Home() {
 				<div className='content__top'>
 					<Categories
 						value={categoryId}
-						onChangeCategory={id => onChangeCategory(id)}
+						onChangeCategory={(id: number) => onChangeCategory(id)}
 					/>
 					<Sort />
 				</div>
@@ -125,7 +128,7 @@ export function Home() {
 
 				<Pagination
 					currentPage={currentPage}
-					onChangePage={number => onChangePage(number)}
+					onChangePage={(page: number) => onChangePage(page)}
 				/>
 			</div>
 		</>

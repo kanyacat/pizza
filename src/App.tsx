@@ -4,11 +4,8 @@ import { Home } from './pages/Home'
 import { NotFound } from './pages/NotFound'
 import { Route, Routes } from 'react-router-dom'
 import { Cart } from './pages/Cart'
-import { createContext } from 'react'
 import { FullPizza } from './pages/FullPizza'
-import { MainLayout } from './redux/MainLayout'
-
-export const SearchContext = createContext()
+import { MainLayout } from './layouts/MainLayout'
 
 function App() {
 	return (

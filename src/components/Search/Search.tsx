@@ -1,18 +1,18 @@
 import styles from './Search.module.scss'
-import { useCallback, useRef, useState } from 'react'
+import React, { useCallback, useRef, useState } from 'react'
 import debounce from 'lodash.debounce'
 import { useDispatch } from 'react-redux'
 import { setSearchValue } from '../../redux/slices/filterSlice'
 
-export function Search() {
+export const Search: React.FC = () => {
 	const dispatch = useDispatch()
 	const [inputValue, setInputValue] = useState('')
 
-	const inputRef = useRef()
+	const inputRef = useRef<HTMLInputElement>(null)
 
 	//useCallback не даст снова создавать функцию при ререндере
 	const updateSearchValue = useCallback(
-		debounce(value => {
+		debounce((value: string) => {
 			console.log(value)
 			dispatch(setSearchValue(value))
 		}, 250),
@@ -22,10 +22,10 @@ export function Search() {
 	const onClickClear = () => {
 		setInputValue('')
 		dispatch(setSearchValue(''))
-		inputRef.current.focus()
+		inputRef.current?.focus()
 	}
 
-	const onChangeInput = event => {
+	const onChangeInput = (event: any) => {
 		setInputValue(event.target.value)
 		updateSearchValue(event.target.value)
 	}

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addItem, cartItemByIdSelector } from '../../redux/slices/cartSlice'
 import { Link } from 'react-router-dom'
@@ -6,11 +6,20 @@ import { Link } from 'react-router-dom'
 const typePizza = ['тонкое', 'традиционное']
 const sizePizza = ['26', '30', '40']
 
-export function PizzaBlock(props) {
+type PizzaBlockProps = {
+	id: string
+	imageUrl: string
+	title: string
+	types: number[]
+	sizes: number[]
+	price: number
+}
+
+export const PizzaBlock: React.FC<PizzaBlockProps> = props => {
 	const { id, imageUrl, title, types, sizes, price } = props
 
-	const [activeType, setActiveType] = useState(types[0])
-	const [activeSize, setActiveSize] = useState(0)
+	const [activeType, setActiveType] = useState<number>(types[0])
+	const [activeSize, setActiveSize] = useState<number>(0)
 
 	const cartItem = useSelector(cartItemByIdSelector(id))
 	const dispatch = useDispatch()
