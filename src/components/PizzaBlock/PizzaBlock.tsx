@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addItem, cartItemByIdSelector } from '../../redux/slices/cartSlice'
 import { Link } from 'react-router-dom'
+import { CartItem } from '../CartItemBlock'
 
 const typePizza = ['тонкое', 'традиционное']
 const sizePizza = ['26', '30', '40']
@@ -27,13 +28,14 @@ export const PizzaBlock: React.FC<PizzaBlockProps> = props => {
 	const addCount = cartItem ? cartItem.count : 0
 
 	const onClickAdd = () => {
-		const item = {
+		const item: CartItem = {
 			id,
 			title,
 			price,
 			imageUrl,
 			type: typePizza[activeType],
-			size: sizePizza[activeSize]
+			size: sizePizza[activeSize],
+			count: 0
 		}
 
 		dispatch(addItem(item))
