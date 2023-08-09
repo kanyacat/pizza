@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useCallback, useEffect, useRef } from 'react'
 import { Categories } from '../components/Categories'
 import { SortPopup } from '../components/SortPopup'
 import { Skeleton } from '../components/PizzaBlock/Skeleton'
@@ -42,9 +42,9 @@ export const Home: React.FC = () => {
 		)
 	}
 
-	const onChangeCategory = (id: number) => {
+	const onChangeCategory = useCallback((id: number) => {
 		dispatch(setCategoryId(id))
-	}
+	}, [])
 
 	const onChangePage = (page: number) => {
 		dispatch(setCurrentPage(page))
@@ -110,11 +110,8 @@ export const Home: React.FC = () => {
 		<>
 			<div className='container'>
 				<div className='content__top'>
-					<Categories
-						value={categoryId}
-						onChangeCategory={(id: number) => onChangeCategory(id)}
-					/>
-					<SortPopup />
+					<Categories value={categoryId} onChangeCategory={onChangeCategory} />
+					<SortPopup value={sort} />
 				</div>
 				<h2 className='content__title'>Все пиццы</h2>
 
