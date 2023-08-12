@@ -1,16 +1,7 @@
 import { useDispatch } from 'react-redux'
-import { addItem, minusItem, removeItem } from '../redux/slices/cartSlice'
+import { addItem, minusItem, removeItem } from '../redux/cart/slice'
 import React from 'react'
-
-export type CartItem = {
-	id: string
-	imageUrl: string
-	title: string
-	type: string
-	size: string
-	price: number
-	count: number
-}
+import { CartItem } from '../redux/cart/types'
 
 type CartItemProps = {
 	id: string

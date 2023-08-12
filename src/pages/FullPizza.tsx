@@ -1,8 +1,8 @@
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
-export const FullPizza: React.FC = () => {
+const FullPizza: React.FC = () => {
 	const { id } = useParams()
 	const [data, setData] = useState<{
 		imageUrl: string
@@ -35,6 +35,13 @@ export const FullPizza: React.FC = () => {
 			<img src={data.imageUrl} alt='' />
 			<h2>{data.title}</h2>
 			<h4>{data.price} ₽</h4>
+			<Link to='/'>
+				<button className='button button--outline button--add'>
+					<span> Назад </span>
+				</button>
+			</Link>
 		</div>
 	)
 }
+
+export default FullPizza

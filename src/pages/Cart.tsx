@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { CartItemBlock } from '../components/CartItemBlock'
-import { cartSelector, clearItems } from '../redux/slices/cartSlice'
+import { clearItems } from '../redux/cart/slice'
 import { CartEmpty } from '../components/CartEmpty'
 import React from 'react'
+import { cartSelector } from '../redux/cart/selectors'
 
-export const Cart: React.FC = () => {
+const Cart: React.FC = () => {
 	const { items, totalPrice } = useSelector(cartSelector)
 	const dispatch = useDispatch()
 
@@ -147,3 +148,5 @@ export const Cart: React.FC = () => {
 		</>
 	)
 }
+
+export default Cart

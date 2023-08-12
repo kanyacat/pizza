@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { addItem, cartItemByIdSelector } from '../../redux/slices/cartSlice'
+import { addItem } from '../../redux/cart/slice'
 import { Link } from 'react-router-dom'
-import { CartItem } from '../CartItemBlock'
+import { CartItem } from '../../redux/cart/types'
+import { cartItemByIdSelector } from '../../redux/cart/selectors'
 
 const typePizza = ['тонкое', 'традиционное']
 const sizePizza = ['26', '30', '40']

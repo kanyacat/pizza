@@ -5,14 +5,12 @@ import { Skeleton } from '../components/PizzaBlock/Skeleton'
 import { PizzaBlock } from '../components/PizzaBlock/PizzaBlock'
 import { Pagination } from '../components/Pagination/Pagination'
 import { useSelector } from 'react-redux'
-import {
-	filterSelector,
-	setCategoryId,
-	setCurrentPage
-} from '../redux/slices/filterSlice'
+import { setCategoryId, setCurrentPage } from '../redux/filter/slice'
 import { useNavigate } from 'react-router-dom'
-import { fetchPizzas, pizzasSelector } from '../redux/slices/pizzasSlice'
+import { fetchPizzas } from '../redux/pizza/slice'
 import { useAppDispatch } from '../redux/store'
+import { filterSelector } from '../redux/filter/selectors'
+import { pizzasSelector } from '../redux/pizza/selectors'
 
 export const Home: React.FC = () => {
 	const navigate = useNavigate()
