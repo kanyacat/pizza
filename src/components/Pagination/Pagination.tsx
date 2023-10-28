@@ -10,7 +10,7 @@ type PaginationProps = {
 export const Pagination: React.FC<PaginationProps> = props => {
 	const { onChangePage, currentPage } = props
 	return (
-		<>
+		<div className={styles.pag}>
 			<ReactPaginate
 				className={styles.root}
 				breakLabel='...'
@@ -22,6 +22,6 @@ export const Pagination: React.FC<PaginationProps> = props => {
 				forcePage={currentPage - 1}
 				renderOnZeroPageCount={null}
 			/>
-		</>
+		</div>
 	)
 }

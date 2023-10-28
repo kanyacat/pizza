@@ -12,12 +12,6 @@ type SortPopupProps = {
 	value: Sort
 }
 
-// type PopupClick = React.MouseEvent<HTMLBodyElement> & {
-// 	composedPath: () => [] & {
-// 		includes: (item: HTMLDivElement) => []
-// 	}
-// }
-
 export const sortList: SortItem[] = [
 	{ name: 'популярности ▼', sortProperty: SortPropertyEnum.RATING_DESC },
 	{ name: 'популярности ▲', sortProperty: SortPropertyEnum.RATING_ASC },

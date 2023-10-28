@@ -48,43 +48,6 @@ export const Home: React.FC = () => {
 		dispatch(setCurrentPage(page))
 	}
 
-	//если был первый рендер и изменились параметры
-	// useEffect(() => {
-	// 	if (isMounted.current) {
-	// 		const queryString = qs.stringify({
-	// 			sortProperty: sort.sortProperty,
-	// 			categoryId,
-	// 			currentPage
-	// 		})
-	//
-	// 		navigate(`?${queryString}`)
-	// 	}
-	// 	isMounted.current = true //произошел рендер
-	// }, [categoryId, sort.sortProperty, searchValue, currentPage])
-	//
-	// //если первый рендер уже был, то проверяем URL-параметры
-	// useEffect(() => {
-	// 	if (window.location.search) {
-	// 		//substring чтоб убрать ?
-	// 		const params = qs.parse(
-	// 			window.location.search.substring(1)
-	// 		) as unknown as SearchPizzaParams
-	//
-	// 		const sort = sortList.find(obj => obj.sortProperty === params.sortBy)
-	//
-	// 		// dispatch(setParams({ ...params, sort }))
-	// 		dispatch(
-	// 			setParams({
-	// 				searchValue: params.search,
-	// 				categoryId: Number(params.category),
-	// 				currentPage: Number(params.currentPage),
-	// 				sort: sort || sortList[0] //sort ? sort : sortList[0]
-	// 			})
-	// 		)
-	// 		isSearch.current = true //пришли параметры из URL
-	// 	}
-	// }, [])
-
 	//если был первый рендер, то просто просим пиццы
 	useEffect(() => {
 		window.scrollTo(0, 0)
@@ -126,7 +89,6 @@ export const Home: React.FC = () => {
 						{status === 'loading' ? skeletons : pizzas}
 					</div>
 				)}
-
 				<Pagination
 					currentPage={currentPage}
 					onChangePage={(page: number) => onChangePage(page)}

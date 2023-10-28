@@ -1,4 +1,12 @@
+.pag {
+  display: flex;
+  justify-content: center;
+
+
+}
+
 .root {
+
   li {
     display: inline-flex;
 
@@ -21,6 +29,12 @@
       &:hover {
         background-color: #fe5f1e;
         color: white;
+      }
+
+      @media (max-width: 340px) {
+        width: 32px;
+        height: 32px;
+        line-height: 32px;
       }
 
     }
