@@ -16,7 +16,7 @@ export const Pagination: React.FC<PaginationProps> = props => {
 				breakLabel='...'
 				nextLabel='>'
 				onPageChange={event => onChangePage(event.selected + 1)}
-				pageRangeDisplayed={4}
+				pageRangeDisplayed={5}
 				pageCount={3}
 				previousLabel='<'
 				forcePage={currentPage - 1}

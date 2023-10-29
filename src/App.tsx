@@ -6,9 +6,7 @@ import { MainLayout } from './layouts/MainLayout'
 import { lazy, Suspense } from 'react'
 
 const Cart = lazy(() => import(/* webpackChunkName: "Cart" */ './pages/Cart'))
-const FullPizza = lazy(
-	() => import(/* webpackChunkName: "FullPizza" */ './pages/FullPizza')
-)
+
 const NotFound = lazy(
 	() => import(/* webpackChunkName: "NotFound" */ './pages/NotFound')
 )
@@ -23,14 +21,6 @@ function App() {
 					element={
 						<Suspense fallback={<div>Идёт загрузка корзины...</div>}>
 							<Cart />{' '}
-						</Suspense>
-					}
-				/>
-				<Route
-					path='pizza/:id'
-					element={
-						<Suspense fallback={<div>Идёт загрузка пиццы...</div>}>
-							<FullPizza />{' '}
 						</Suspense>
 					}
 				/>

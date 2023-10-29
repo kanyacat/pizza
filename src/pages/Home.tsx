@@ -6,22 +6,18 @@ import { PizzaBlock } from '../components/PizzaBlock/PizzaBlock'
 import { Pagination } from '../components/Pagination/Pagination'
 import { useSelector } from 'react-redux'
 import { setCategoryId, setCurrentPage } from '../redux/filter/slice'
-import { useNavigate } from 'react-router-dom'
 import { fetchPizzas } from '../redux/pizza/slice'
 import { useAppDispatch } from '../redux/store'
 import { filterSelector } from '../redux/filter/selectors'
 import { pizzasSelector } from '../redux/pizza/selectors'
 
 export const Home: React.FC = () => {
-	const navigate = useNavigate()
-
 	const { categoryId, sort, currentPage, searchValue } =
 		useSelector(filterSelector)
 	const { items, status } = useSelector(pizzasSelector)
 	const dispatch = useAppDispatch()
 
 	const isSearch = useRef(false)
-	const isMounted = useRef(false)
 
 	const getPizzas = async () => {
 		const category = categoryId > 0 ? `category=${categoryId}` : ''
@@ -66,6 +62,10 @@ export const Home: React.FC = () => {
 	const skeletons = [...new Array(6)].map((_, index) => (
 		<Skeleton key={index} />
 	))
+
+	if (status === 'success' && pizzas.length === 0) {
+		window.location.reload()
+	}
 
 	return (
 		<>

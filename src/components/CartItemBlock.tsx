@@ -37,6 +37,7 @@ export const CartItemBlock: React.FC<CartItemProps> = props => {
 			)
 		)
 			dispatch(removeItem(id))
+		window.location.reload()
 	}
 
 	return (
