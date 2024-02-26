@@ -5,7 +5,11 @@
 
 
   &__label {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
 
 
@@ -30,6 +34,7 @@
     right: 0;
     margin-top: 15px;
     background: #ffffff;
+    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.09);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.09);
     border-radius: 10px;
     overflow: hidden;
@@ -55,3 +60,4 @@
     }
   }
 }
+

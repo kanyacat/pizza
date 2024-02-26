@@ -5,11 +5,20 @@
   padding: 20px 0;
 
   .container {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
 
     @media (max-width: 880px) {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
       flex-direction: column;
 
       .header__cart {
@@ -20,6 +29,8 @@
   }
 
   &__logo {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
 
     img {
@@ -38,8 +49,15 @@
     }
 
     @media (max-width: 645px) {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
       flex-direction: column;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
       align-items: center;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
       justify-content: center;
       text-align: center;
     }

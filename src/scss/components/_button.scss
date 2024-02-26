@@ -8,6 +8,8 @@
   min-width: 100px;
   text-align: center;
   cursor: pointer;
+  -webkit-transition: background-color $duration ease-in-out, border-color $duration ease-in-out;
+  -o-transition: background-color $duration ease-in-out, border-color $duration ease-in-out;
   transition: background-color $duration ease-in-out, border-color $duration ease-in-out;
   border: 1px solid transparent;
   @include noselect();
@@ -21,6 +23,8 @@
   span,
   path,
   svg {
+    -webkit-transition: all $duration ease-in-out;
+    -o-transition: all $duration ease-in-out;
     transition: all $duration ease-in-out;
   }
 
@@ -30,12 +34,20 @@
 
   &:active {
     background-color: darken($orange, 12%);
+    -webkit-transform: translateY(1px);
+    -ms-transform: translateY(1px);
     transform: translateY(1px);
   }
 
   &--circle {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     width: 32px;
     height: 32px;
@@ -147,7 +159,11 @@
   }
 
   &--cart {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     line-height: 23px;
     padding: 12px 25px;
